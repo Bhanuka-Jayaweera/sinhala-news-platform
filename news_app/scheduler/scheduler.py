@@ -7,6 +7,8 @@ from news_app.dto.news import NewsItem
 from news_app.models import News
 from news_app.services.classifier import Classifier
 from news_app.services.spider import Spider
+from news_app.services.hiru_spider import HiruSpider
+from news_app.services.newsfirst_spider import NewsFirstSpider
 from recommendation.services.vector_db_provider import get_chroma_db_collection
 from sinhala_news_platform_backend.settings import NEWS_ABSTRACT_SIZE
 
@@ -24,10 +26,15 @@ def trigger_web_spider(scheduler):
     print("trigger_web_spider task is running...")
 
     classifier = Classifier()
-    spider = Spider()
     chroma_collection = get_chroma_db_collection()
 
-    news_items = spider.load_latest_news_items()
+    spiders = [Spider(), HiruSpider(), NewsFirstSpider()]
+    news_items: list[NewsItem] = []
+    for spider in spiders:
+        try:
+            news_items.extend(spider.load_latest_news_items())
+        except Exception as e:
+            print(f'{type(spider).__name__} failed to load news items: {e}')
 
     classified_news_items: list[NewsItem] = classifier.bert_classify(news_items)
 

@@ -1,13 +1,11 @@
 import datetime
 import time
-from django.utils.timezone import make_aware
 
 from bs4 import BeautifulSoup
-import pytz
 import requests
 
 from news_app.dto.news import NewsItem
-from news_app.models import News
+from news_app.services.spider_common import get_last_known_date
 from sinhala_news_platform_backend.settings import DERANA_NEWS_ID_PREFIX
 
 
@@ -92,13 +90,10 @@ class Spider:
         return news_item
     
     def load_latest_news_items(self) -> list[NewsItem]:
-        try:
-            last_news = News.objects.latest('date')
-            last_news_datetime_in_db = last_news.date
-
-        except News.DoesNotExist as ex:
-            last_news_datetime_in_db = datetime.datetime(1990, 1, 1, 1, 1, 1, 1)
-            last_news_datetime_in_db = make_aware(last_news_datetime_in_db, timezone=pytz.timezone('UTC'))
+        # Scoped to this source's own prefix -- with multiple news sources
+        # now sharing the News table, the most recent item across ALL
+        # sources is not a valid cursor for this one.
+        last_news_datetime_in_db = get_last_known_date(DERANA_NEWS_ID_PREFIX)
 
         loaded_news_items: list[NewsItem] = []
 
