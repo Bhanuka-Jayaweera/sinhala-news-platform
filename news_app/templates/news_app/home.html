@@ -1,0 +1,64 @@
+{% extends "news_app/base.html" %}
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+<div class="row">
+
+    {% comment %} Recommended news section {% endcomment %}
+    <div class="col-9 recommended-news-container">
+        <h3>මගේ විශ‌ේෂාංග ...</h3>
+        <div class="row row-cols-3 recommended-news-panel">
+            {% for news_item in news_item_list %}
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ news_item.heading }}</h5>
+                        <p class="card-text">{{ news_item.abstract }} ...</p>
+                        <div class="news-card-footer-container">
+                            <a class="fill-remain" href="{{ news_item.link_to_source }}" target="_blank">Read more</a>
+                            <div class="news-user-feedback">
+                                <a class="feedback-positive" href="#">👍</a>
+                                {% comment %} <a class="feedback-negative" href="#">👎</a> {% endcomment %}
+                            </div>
+                        </div>
+                        <input type="hidden" class="hdn-news-id" value="{{ news_item.news_id }}">
+                    </div>
+                    <div class="news-category">
+                        <span class="fill-remain">{{ news_item.category }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    {% comment %} Latest news section {% endcomment %}
+    <div class="col-3 hot-news-container">
+        <h3>උණුසුම් පුවත්</h3>
+        <div class="row row-cols-1 hot-news-panel">
+            {% for extra_news_item in extra_news_list %}
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ extra_news_item.heading }}</h5>
+                        {% comment %} <p class="card-text">{{ extra_news_item.content | slice:"0:30" }}</p> {% endcomment %}
+                        {% comment %} <p class="card-text">{{ extra_news_item.abstract }} ...</p> {% endcomment %}
+                        <div class="news-card-footer-container">
+                            <a class="fill-remain" href="{{ extra_news_item.link_to_source }}" target="_blank">Read more</a>
+                            <div class="news-user-feedback">
+                                <a class="feedback-positive" href="#">👍</a>
+                                {% comment %} <a class="feedback-negative" href="#">👎</a> {% endcomment %}
+                            </div>
+                        </div>
+                        <input type="hidden" class="hdn-news-id" value="{{ extra_news_item.news_id }}">
+                    </div>
+                    <div class="news-category">
+                        <span class="fill-remain">{{ extra_news_item.category }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

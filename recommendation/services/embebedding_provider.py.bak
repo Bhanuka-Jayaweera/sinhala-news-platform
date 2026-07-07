@@ -1,0 +1,28 @@
+from numpy import ndarray
+from sentence_transformers import SentenceTransformer
+import pickle
+from sklearn.feature_extraction.text import TfidfVectorizer
+import os
+
+print(f'Working dir: {os.getcwd()}')
+
+sentence_bert_model = SentenceTransformer('Ransaka/sinhala-roberta-sentence-transformer')
+try:
+    with open('temp/models/xgboost/tfidf_vectorizer.pkl', 'rb') as f:
+        tfidf_vectorizer: TfidfVectorizer = pickle.load(f)
+except:
+    from sklearn.feature_extraction.text import TfidfVectorizer
+    tfidf_vectorizer = TfidfVectorizer()
+    print("⚠️ Using dummy TfidfVectorizer")
+
+print('-- It is loaded again ---------------------------')
+
+
+def get_sbert_embeddings(text_documents: list[str]):
+    return sentence_bert_model.encode(text_documents)
+
+def get_sbert_embedding(text_document: str) -> ndarray:
+    return sentence_bert_model.encode(text_document)
+
+def get_tfidf_embeddings(text_documents: list[str]):
+    return tfidf_vectorizer.transform(text_documents)

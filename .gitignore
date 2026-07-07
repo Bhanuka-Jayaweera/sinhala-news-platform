@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.class
+*.so
+.Python
+env/
+venv/
+sinhala_env/
+ENV/
+
+# Django
+*.log
+*.pot
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# ChromaDB
+chroma/
+*.sqlite3
+
+# Models
+temp/
+*.pkl
+*.h5
+*.pt
+*.pth
+*.bin
+*.model
+*.safetensors
+*.npy
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

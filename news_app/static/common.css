@@ -1,0 +1,137 @@
+/* Import google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@200..800&family=Noto+Sans+Sinhala:wght@100..900&family=Noto+Serif+Sinhala:wght@100..900&display=swap');
+
+.page-header {
+    background-color: rgba(18, 67, 229, 0.671);
+    color: white;
+    padding-right: 20px;
+    font-family: "Gemunu Libre", sans-serif;
+    font-size: 30px;
+    position: sticky;
+    z-index: 999;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    backdrop-filter: blur(6px);
+    border-bottom: 10px solid rgb(169, 193, 254);
+}
+
+.page-header h1 {
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.page-header a {
+    color: white;
+    text-decoration: none;
+}
+
+.page-header h1, .page-header span, .page-header a {
+    margin-left: 15px;
+}
+
+.page-title {
+    background-color: rgba(0, 0, 0, 0.515);
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    backdrop-filter: blur(6px);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.page-title > h1 {
+    font-family: "Noto Sans Sinhala", sans-serif;
+}
+
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form {
+    width: 50%;
+}
+
+.news-card-footer-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.news-category {
+    display: flex;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.63);
+    color: white;
+    font-weight: 600;
+    height: fit-content;
+    border-radius: 0 0 5px 5px;
+}
+
+.news-user-feedback > a {
+    text-decoration: none;
+    transition: 0.5s ease-in-out;
+    padding: 5px 20px 5px 20px;
+    border-radius: 5px;
+}
+
+.feedback-positive:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(118, 188, 108);
+    background-color: rgb(118, 188, 108);
+}
+
+.feedback-negative:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(255, 157, 157);
+    transform: rotate(45deg);
+}
+
+.fill-remain {
+    flex-grow: 1;
+}
+
+.card {
+    margin-top: 10px;
+    cursor: default;
+}
+
+.card:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.card-title {
+    font-family: "Noto Serif Sinhala", serif;
+}
+
+.card-text {
+    font-family: "Noto Sans Sinhala", sans-serif;
+    font-size: small;
+}
+
+.recommended-news-panel, .hot-news-panel {
+    background-color: white;
+    border-radius: 10px;
+    min-height: 100px;
+    margin: 5px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.recommended-news-container, .hot-news-container {
+    background-color: rgb(196, 196, 196);
+}
+
+.recommended-news-container h3, .hot-news-container h3 {
+    color: rgb(0, 0, 0);
+    font-family: "Noto Sans Sinhala", sans-serif;
+    margin-top: 10px;
+    margin-left: 5px;
+    font-size: 20px;
+}

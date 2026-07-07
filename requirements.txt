@@ -1,0 +1,14 @@
+Django==5.0.6
+django-rest-framework==0.1.0
+django-apscheduler==0.6.2
+beautifulsoup4==4.12.3
+requests==2.32.3
+pandas==2.2.2
+numpy==1.26.4
+transformers[torch]==4.41.2
+accelerate==1.14.0
+sentence_transformers==3.0.1
+scikit-learn==1.5.0
+xgboost==2.1.1
+sinling==0.3.6
+chromadb==0.5.5
